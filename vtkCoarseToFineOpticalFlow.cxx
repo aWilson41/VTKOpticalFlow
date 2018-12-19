@@ -30,7 +30,7 @@ static float trilinearSamplePoint(vtkImageData* imageData, float x, float y, flo
 	// Get the intensities at the 8 nearest neighbors
 	float i000 = imagePtr[calcIndex(xi, yi, zi, dim[0], dim[1]) * 3 + comp];
 	float i100 = imagePtr[calcIndex(xi + 1, yi, zi, dim[0], dim[1]) * 3 + comp];
-	float i110 = imagePtr[calcIndex(xi + 1, yi + 1, zi, dim[0], dim[1] * 3 + comp)];
+	float i110 = imagePtr[calcIndex(xi + 1, yi + 1, zi, dim[0], dim[1]) * 3 + comp];
 	float i010 = imagePtr[calcIndex(xi, yi + 1, zi, dim[0], dim[1]) * 3 + comp];
 
 	float i001 = imagePtr[calcIndex(xi, yi, zi + 1, dim[0], dim[1]) * 3 + comp];
@@ -125,7 +125,7 @@ int vtkCoarseToFineOpticalFlow::RequestData(vtkInformation* request, vtkInformat
 					float sYPos = (y * spacing1[1] + origin1[1]) * ratio;
 					float sZPos = (z * spacing1[2] + origin1[2]) * ratio;
 
-					// Get the intensities at the 8 nearest in the coarser image we are sampling from
+					// trilinearly interpolate each component from the smaller image
 					float flowX = trilinearSamplePoint(optFlowImage, sXPos, sYPos, sZPos, 0) * invScale;
 					float flowY = trilinearSamplePoint(optFlowImage, sXPos, sYPos, sZPos, 1) * invScale;
 					float flowZ = trilinearSamplePoint(optFlowImage, sXPos, sYPos, sZPos, 2) * invScale;

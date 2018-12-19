@@ -21,10 +21,10 @@ int main(int argc, char* argv[])
 	std::string input1Str = "C:/Users/Andx_/Desktop/MH3D_25_Test1.nii";
 	std::string input2Str = "C:/Users/Andx_/Desktop/MH3D_25_Test2.nii";
 	std::string outputStr = "C:/Users/Andx_/Desktop/output.nii";
-	double minScale = 0.25;
+	double minScale = 0.6;
 	double maxScale = 1.0;
 	int numLevels = 3;
-	double renderArrowScale = 0.2;
+	double renderArrowScale = 0.3;
 
 	vtkSmartPointer<vtkNIFTIReader> reader1 = vtkSmartPointer<vtkNIFTIReader>::New();
 	reader1->SetFileName(input1Str.c_str());
