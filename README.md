@@ -1,4 +1,4 @@
-# VTKLKOpticalFlow
+# vtkLKOpticalFlow
 Lucas Kanade optical flow filter for 3D images in VTK. Also includes a coarse to fine extension of it and an example that glyphs the vectors for display.
 
 VTKImageOpticalFlow: Computes the LK optical flow on an image for every voxel.
